@@ -1,0 +1,21 @@
+Id,Habitat,Ukuran,Bentuk Tubuh,Warna,Nilai Ekonomis,Tingkah Laku,Ikan
+1,Air tawar dangkal,15-25 cm,"Lonjong, pipih","Abu-abu gelap, keperakan",Tinggi,"Bergerombol, omnivora",Mujair
+2,Air tawar tenang,25-65 cm,"Lonjong besar, pipih","Cokelat muda, keperakan",Sangat tinggi,"Lamban, omnivora",Gurame
+3,Air tawar berlumpur,15-50 cm,"Memanjang, bersungut",Cokelat kehitaman,Tinggi,"Nokturnal, karnivora",Lele
+4,Air tawar mengalir,20-50 cm,"Oval, agak pipih","Keemasan, keperakan",Sangat tinggi,"Aktif, omnivora",Mas
+5,Air tawar dalam,30-100 cm,"Memanjang, licin","Perak, putih, keabu-abuan",Tinggi,"Nokturnal, omnivora",Patin
+6,Air tawar dangkal,15-30 cm,"Lonjong, pipih",Abu-abu kehitaman,Tinggi,"Bergerombol, omnivora",Nila
+7,Air tawar rawa,20-60 cm,Silindris memanjang,Cokelat loreng kehitaman,Sedang,"Soliter, predator",Gabus
+8,Kolam buatan,20-90 cm,"Oval, pipih","Warna-warni (putih, merah, oranye)",Sangat tinggi,"Bergerombol, jinak",Koi
+9,Kolam kecil,5-10 cm,"Kecil, pipih",Warna-warni cerah,Tinggi,"Agresif, soliter",Cupang
+10,Air tawar tenang,60-90 cm,"Memanjang, pipih","Keemasan, perak, kehijauan",Sangat tinggi,"Lamban, predator",Arwana
+11,Air tawar dangkal,10-20 cm,"Lonjong, kecil",Perak kehijauan,Sedang,"Aktif, omnivora",Seluang
+12,Air tawar berlumpur,30-60 cm,"Memanjang, bersisik",Cokelat keabu-abuan,Tinggi,"Nokturnal, soliter",Betok
+13,Air tawar rawa,15-40 cm,"Oval, kecil",Hitam kehijauan,Sedang,"Aktif, karnivora",Toman
+14,Air tawar dangkal,8-15 cm,"Kecil, bersisik",Kuning keperakan,Sedang,"Bergerombol, omnivora",Wader
+15,Air tawar berlumpur,25-45 cm,"Memanjang, licin",Abu-abu gelap,Tinggi,"Nokturnal, soliter",Baung
+16,Air tawar mengalir,12-25 cm,"Oval, kecil",Perak cerah,Sedang,"Bergerombol, omnivora",Tawes
+17,Kolam buatan,10-20 cm,"Kecil, pipih",Merah terang,Tinggi,"Jinak, bergerombol",Guppy
+18,Air tawar rawa,20-50 cm,"Silindris memanjang",Cokelat tua,Sedang,"Soliter, agresif",Hampala
+19,Air tawar dalam,40-80 cm,"Memanjang, besar",Putih keabu-abuan,Tinggi,"Nokturnal, pemangsa",Jelawat
+20,Air tawar tenang,25-70 cm,"Lonjong, pipih","Keemasan, abu-abu",Sangat tinggi,"Lamban, omnivora",Nilem
