@@ -1,7 +1,7 @@
 import pandas as pd
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import re
+from rapidfuzz import fuzz  # Untuk fuzzy matching
 
 # Membaca data ikan dari CSV
 df = pd.read_csv('data/ikan_air_tawar.csv')
@@ -10,30 +10,18 @@ app = Flask(__name__)
 CORS(app)
 
 
-def text_match_percentage(text, target):
+def fuzzy_match_percentage(text, target):
     """
-    Fungsi pencocokan teks dengan persentase kecocokan
+    Fungsi fuzzy matching menggunakan rapidfuzz untuk menghitung persentase kecocokan
     """
     text = str(text).lower()
     target = str(target).lower()
-
-    # Tokenisasi kata (memecah kalimat menjadi kata)
-    text_words = set(re.findall(r'\w+', text))
-    target_words = set(re.findall(r'\w+', target))
-
-    # Hitung jumlah kata yang cocok
-    match_words = text_words.intersection(target_words)
-
-    if not text_words:  # Hindari pembagian dengan nol
-        return 0
-
-    # Hitung persentase kecocokan
-    return len(match_words) / len(text_words) * 100
+    return fuzz.partial_ratio(text, target)  # Cocokan sebagian teks dengan skor fuzzy
 
 
 def match_fish_characteristics(description):
     """
-    Mencocokkan karakteristik input dengan database ikan
+    Mencocokkan karakteristik input dengan database ikan menggunakan fuzzy matching
     """
     results = []
 
@@ -45,11 +33,11 @@ def match_fish_characteristics(description):
 
         # Periksa setiap kolom dan hitung persentase kecocokan
         for column in columns_to_check:
-            percentage = text_match_percentage(description, str(row[column]))
+            percentage = fuzzy_match_percentage(description, str(row[column]))
             max_percentage = max(max_percentage, percentage)
 
-        # Tambahkan ke hasil jika ada kecocokan
-        if max_percentage > 0:
+        # Tambahkan ke hasil jika ada kecocokan di atas ambang batas (misal 50%)
+        if max_percentage >= 50:
             results.append({
                 'ikan': row['Ikan'],
                 'persentase_kecocokan': round(max_percentage, 2),
@@ -78,6 +66,14 @@ def identify_fish():
     try:
         description = input_data.get('description', '')
 
+        # Validasi input deskripsi
+        if not description or len(description.strip()) == 0:
+            return jsonify({
+                'status': 'error',
+                'message': 'Deskripsi tidak boleh kosong.',
+                'results': []
+            }), 400
+
         # Jalankan pencocokan deskripsi
         results = match_fish_characteristics(description)
 
@@ -87,7 +83,7 @@ def identify_fish():
                 'status': 'error',
                 'message': 'Deskripsi tidak cocok dengan data ikan.',
                 'results': []
-            }), 400
+            }), 404
 
         return jsonify({
             'status': 'success',
@@ -98,7 +94,7 @@ def identify_fish():
             'status': 'error',
             'message': 'Terjadi kesalahan.',
             'details': str(e)
-        }), 400
+        }), 500
 
 
 if __name__ == '__main__':
